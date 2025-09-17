@@ -27,9 +27,9 @@ cd testomat-flaky-csv
 3. Open `testruns?...page=1&run_id=...` → **Copy → Copy response**.
 4. Save to file (macOS example):
 ```bash
-mkdir -p ~/Desktop/testomat_runs
-pbpaste > ~/Desktop/testomat_runs/run_2025-09-16.json
-python3 -m json.tool ~/Desktop/testomat_runs/run_2025-09-16.json >/dev/null && echo "JSON OK"
+mkdir -p ~/path/to/testomat_runs
+pbpaste > ~/path/to/testomat_runs/run_2025-09-16.json
+python3 -m json.tool ~/path/to/testomat_runs/run_2025-09-16.json >/dev/null && echo "JSON OK"
 ```
 
 ### Pagination
@@ -39,23 +39,23 @@ If the response contains `meta.total_pages > 1`, save all pages as `..._p1.json`
 
 ## Run the converter
 ```bash
-mkdir -p ~/Desktop/flaky_tests
-python3 scripts/flaky_from_testomat.py   ~/Desktop/testomat_runs/run_2025-09-16.json   ~/Desktop/flaky_tests/_flaky_overview.csv
-open -R ~/Desktop/flaky_tests/_flaky_overview.csv  # macOS: reveal file
+mkdir -p ~/path/to/flaky_tests
+python3 scripts/flaky_from_testomat.py   ~/path/to/testomat_runs/run_2025-09-16.json   ~/path/to/flaky_tests/_flaky_overview.csv
+open -R ~/path/to/flaky_tests/_flaky_overview.csv  # macOS: reveal file
 ```
 
 ### Batch convert many JSON files
 ```bash
-for f in ~/Desktop/testomat_runs/run_*.json; do
-  python3 scripts/flaky_from_testomat.py "$f" ~/Desktop/flaky_tests/_flaky_overview.csv
+for f in ~/path/to/testomat_runs/run_*.json; do
+  python3 scripts/flaky_from_testomat.py "$f" ~/path/to/flaky_tests/_flaky_overview.csv
 done
 ```
 
 ## Merge paginated pages into one JSON (optional)
 ```bash
-python3 scripts/merge_pages.py   --glob '~/Desktop/testomat_runs/run_c4883898_p*.json'   --out  '~/Desktop/testomat_runs/run_c4883898_all.json'
+python3 scripts/merge_pages.py   --glob '~/path/to/testomat_runs/run_c4883898_p*.json'   --out  '~/path/to/testomat_runs/run_c4883898_all.json'
 
-python3 scripts/flaky_from_testomat.py   ~/Desktop/testomat_runs/run_c4883898_all.json   ~/Desktop/flaky_tests/_flaky_overview.csv
+python3 scripts/flaky_from_testomat.py   ~/path/to/testomat_runs/run_c4883898_all.json   ~/path/to/flaky_tests/_flaky_overview.csv
 ```
 
 ## Notes
