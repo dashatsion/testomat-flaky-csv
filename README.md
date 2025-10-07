@@ -1,3 +1,8 @@
+<p align="center">
+  <a href="https://github.com/dashatsion/testomat-flaky-csv/stargazers"><img src="https://img.shields.io/github/stars/dashatsion/testomat-flaky-csv?style=social" alt="GitHub stars"></a>
+  <a href="https://github.com/dashatsion/testomat-flaky-csv/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+</p>
+
 # Testomat → Flaky CSV (offline)
 
 Offline tool that turns **Testomat run JSON** into a CSV with `trend_last5`, flaky detection and reasons — **no API, no credits**.  
